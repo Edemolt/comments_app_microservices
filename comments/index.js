@@ -28,7 +28,7 @@ app.post('/posts/:id/comments', async ( req, resp) => {
     comments_by_post_id[req.params.id] = comments;
 
     // emit an event to the event bus
-    await axios.post('http://localhost:4005/events', {
+    await axios.post('http://event-bus-srv:4005/events', {
         type: 'comment_created',
         data: {
             id: comment_id, // the comment id
@@ -61,7 +61,7 @@ app.post('/events', async ( req, resp ) => {
         comment.status = status;    
         // now tell every other service that this event has occured
 
-        await axios.post(`http://localhost:4005/events`, {
+        await axios.post(`http://event-bus-srv:4005/events`, {
             type : `comment_updated`,
             data:{
                 id : id,

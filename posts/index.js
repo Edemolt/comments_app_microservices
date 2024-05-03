@@ -14,7 +14,7 @@ app.get('/posts', ( req, resp) => {
     resp.send(posts);
 });
 
-app.post('/posts', async ( req, resp) => {
+app.post('/posts/create', async ( req, resp) => {
     const id = randomBytes(4).toString('hex');
     const { title } = req.body;
 
@@ -40,6 +40,6 @@ app.post('/events', ( req, resp ) => {
 
 
 app.listen(4000, () => {
-    console.log('v55');
+    console.log('v1000');
     console.log('Listening on 4000');
 });
